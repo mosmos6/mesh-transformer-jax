@@ -30,7 +30,6 @@
     "owt": "gptjtest.val.index"
   },
 
-
   "val_batches": 159,
   "val_every": 500,
   "ckpt_every": 500,
