@@ -19,23 +19,32 @@
   "weight_decay": 0.1,
   "total_steps": 350000,
 
-  "tpu_size": 8,
+  "tpu_size": 256,
 
-  "bucket": "gptjtest2",
-  "model_dir": "checkpoints",
+  "bucket": "neo-models",
+  "model_dir": "mesh_jax_pile_6B_rotary",
 
-  "train_set": "gptjtest.train.index",
+  "train_set": "pile.train.index",
   "val_set": {
-    "pile": "gptjtest.val.index",
-    "owt": "gptjtest.val.index"
+    "pile": "pile.val.index",
+    "owt": "openwebtext2_new_inputs.val.index"
   },
 
-  "val_batches": 159,
+  "eval_harness_tasks": [
+    "lambada",
+    "piqa",
+    "hellaswag",
+    "winogrande",
+    "mathqa",
+    "pubmedqa"
+  ],
+
+  "val_batches": 100,
   "val_every": 500,
   "ckpt_every": 500,
   "keep_every": 10000,
 
-  "name": "gptjtest",
+  "name": "GPT3_6B_pile_rotary",
   "wandb_project": "mesh-transformer-jax",
   "comment": ""
 }
