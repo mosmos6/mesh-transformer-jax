@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     start = time.time()
     #print(f"jax devices: {jax.device_count()}")
-    print(f"jax runtime initialized in {time.time() - start:.06}s")
+    #print(f"jax runtime initialized in {time.time() - start:.06}s")
 
     mesh_shape = (jax.device_count() // cores_per_replica, cores_per_replica)
     devices = np.array(jax.devices()).reshape(mesh_shape)
