@@ -34,8 +34,8 @@ if __name__ == "__main__":
 
     assert cores_per_replica <= 8
 
-    bucket = params["bucket"]
-    model_dir = params["model_dir"]
+    bucket = params["gptjtest2"]
+    model_dir = params["checkpoints"]
 
     params["optimizer"] = optax.chain(
         optax.scale(1),
