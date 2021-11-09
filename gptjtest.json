@@ -14,9 +14,9 @@
 
   "warmup_steps": 11,
   "anneal_steps": 101,
-  "lr": 1e-4,
-  "end_lr": 1e-5,
-  "weight_decay": 0.5,
+  "lr": 1e-5,
+  "end_lr": 1e-6,
+  "weight_decay": 0.1,
   "total_steps": 112,
 
   "tpu_size": 8,
