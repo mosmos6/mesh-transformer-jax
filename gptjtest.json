@@ -10,14 +10,14 @@
   "seq": 2048,
   "cores_per_replica": 8,
   "per_replica_batch": 1,
-  "gradient_accumulation_steps": 64,
+  "gradient_accumulation_steps": 96,
 
-  "warmup_steps": 6,
-  "anneal_steps": 50,
+  "warmup_steps": 4,
+  "anneal_steps": 34,
   "lr": 2e-5,
   "end_lr": 2e-6,
   "weight_decay": 0.1,
-  "total_steps": 56,
+  "total_steps": 38,
 
   "tpu_size": 8,
 
