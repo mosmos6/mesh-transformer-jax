@@ -22,7 +22,7 @@
   "tpu_size": 8,
 
   "bucket": "gptjtest2",
-  "model_dir": "checkpoints",
+  "model_dir": "checkpoints2",
 
   "train_set": "gptjtest.train.index",
   "val_set": {
