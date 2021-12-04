@@ -10,7 +10,7 @@
   "seq": 2048,
   "cores_per_replica": 8,
   "per_replica_batch": 1,
-  "gradient_accumulation_steps": 646,
+  "gradient_accumulation_steps": 793,
 
   "warmup_steps": 1,
   "anneal_steps": 9,
@@ -22,7 +22,7 @@
   "tpu_size": 8,
 
   "bucket": "gptjtest2",
-  "model_dir": "checkpoints4",
+  "model_dir": "futurecp",
 
   "train_set": "gptjtest.train.index",
   "val_set": {
@@ -40,7 +40,7 @@
   ],
   
   
-  "val_batches": 325,
+  "val_batches": 19,
   "val_every": 100,
   "ckpt_every": 500,
   "keep_every": 10000,
