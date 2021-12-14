@@ -22,7 +22,7 @@
   "tpu_size": 8,
 
   "bucket": "gptjtest2",
-  "model_dir": "futurecp",
+  "model_dir": "step_383500",
 
   "train_set": "gptjtest.train.index",
   "val_set": {
