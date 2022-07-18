@@ -10,7 +10,7 @@
   "seq": 2048,
   "cores_per_replica": 8,
   "per_replica_batch": 1,
-  "gradient_accumulation_steps": 784,
+  "gradient_accumulation_steps": 846,
 
   "warmup_steps": 1,
   "anneal_steps": 9,
@@ -22,7 +22,7 @@
   "tpu_size": 8,
 
   "bucket": "gptjtest2",
-  "model_dir": "ftjp",
+  "model_dir": "mir",
 
   "train_set": "gptjtest.train.index",
   "val_set": {
