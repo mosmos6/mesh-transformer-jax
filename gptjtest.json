@@ -10,7 +10,7 @@
   "seq": 2048,
   "cores_per_replica": 8,
   "per_replica_batch": 1,
-  "gradient_accumulation_steps": 846,
+  "gradient_accumulation_steps": 860,
 
   "warmup_steps": 1,
   "anneal_steps": 9,
@@ -22,7 +22,7 @@
   "tpu_size": 8,
 
   "bucket": "gptjtest2",
-  "model_dir": "mir",
+  "model_dir": "apo",
 
   "train_set": "gptjtest.train.index",
   "val_set": {
@@ -40,7 +40,7 @@
   ],
   
   
-  "val_batches": 38,
+  "val_batches": 51,
   "val_every": 100,
   "ckpt_every": 500,
   "keep_every": 10000,
