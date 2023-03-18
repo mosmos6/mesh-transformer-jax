@@ -27,6 +27,6 @@ func_timeout
 ftfy~=6.1.0
 fastapi
 uvicorn
-lm_dataformat~=0.0.20,!=0.0.20
+lm_dataformat
 pathy~=0.10.1,!=0.10.1
 chex==0.1.2
