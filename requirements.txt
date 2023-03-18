@@ -19,7 +19,7 @@ jax~=0.2.20
 jaxlib==0.1.76
 Flask~=1.1.2
 cloudpickle~=1.5.0
-tensorflow-cpu~=2.6.0
+tensorflow-cpu
 google-cloud-storage~=1.37.1
 transformers~=4.16.2
 smart_open[gcs]~=5.2.1
