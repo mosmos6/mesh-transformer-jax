@@ -23,7 +23,7 @@ tensorflow-cpu
 google-cloud-storage~=1.37.1
 transformers~=4.16.2
 smart_open[gcs]~=5.2.1
-func_timeout~=4.3.5,!=4.3.5
+func_timeout
 ftfy~=6.1.0
 fastapi
 uvicorn
