@@ -28,5 +28,5 @@ ftfy~=6.1.0
 fastapi
 uvicorn
 lm_dataformat
-pathy~=0.10.1,!=0.10.1
+pathy
 chex==0.1.2
