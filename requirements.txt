@@ -16,7 +16,7 @@ optax==0.0.9
 dm-haiku==0.0.5
 ray[default]==1.4.1
 jax~=0.2.20
-jaxlib==0.1.76
+jaxlib==0.1.74
 Flask~=1.1.2
 cloudpickle~=1.5.0
 tensorflow-cpu
@@ -29,4 +29,4 @@ fastapi
 uvicorn
 lm_dataformat~=0.0.20
 pathy~=0.10.1
-chex==0.0.5
+chex==0.1.2
