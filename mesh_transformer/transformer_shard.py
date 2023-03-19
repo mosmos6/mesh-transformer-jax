@@ -651,7 +651,7 @@ class CausalTransformerV2:
             return final_state, outputs
 
         self.move_weights_pjit = pjit(lambda x: to_bf16(x),
-                                      in_axis_resources=(state_shard["params"]),
+                                      in_axis_resources=(state_shard["params"], ),
                                       out_axis_resources=mp_shard_strategy if early_collect else state_shard["params"])
 
         seq = config["seq"]
