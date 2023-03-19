@@ -8,7 +8,7 @@ import jax
 import jax.numpy as jnp
 import numpy as np
 import optax
-from jax.experimental.maps import thread_resources
+# from jax.experimental.maps import thread_resources
 from jax.experimental.pjit import pjit
 
 from mesh_transformer.checkpoint import read_ckpt, write_ckpt, write_ckpt_v2, load_ckpt_v2
@@ -255,10 +255,10 @@ class CausalTransformer:
 
         key = hk.PRNGSequence(42)
 
-        assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
+        # assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
 
-        dp = thread_resources.env.shape['dp']
-        mp = thread_resources.env.shape['mp']
+        dp = 1
+        mp = 8
 
         mp_per_host = min(mp, 8)
 
@@ -284,7 +284,7 @@ class CausalTransformer:
         write_ckpt(self.state, path, shard)
 
     def load_ckpt(self, path):
-        self.state = read_ckpt(self.state, path, thread_resources.env.shape['dp', 'mp'])
+        self.state = read_ckpt(self.state, path, [1,8])
 
     def train(self, sample):
         # print("train iter")
@@ -451,10 +451,10 @@ class CausalTransformerV2:
 
             return output_state
 
-        assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
+        # assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
 
-        dp = thread_resources.env.shape['dp']
-        mp = thread_resources.env.shape['mp']
+        dp = 1
+        mp = 8
 
         key = hk.PRNGSequence(42)
         x = jax.random.uniform(next(key), (mp * dp, 16), minval=0, maxval=1).astype(jnp.uint32)  # batch, seq
