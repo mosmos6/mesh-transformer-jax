@@ -284,7 +284,7 @@ class CausalTransformer:
         write_ckpt(self.state, path, shard)
 
     def load_ckpt(self, path):
-        self.state = read_ckpt(self.state, path, thread_resources.env.shape['mp'])
+        self.state = read_ckpt(self.state, path, thread_resources.env.shape['dp', 'mp'])
 
     def train(self, sample):
         # print("train iter")
