@@ -218,7 +218,7 @@ class CausalTransformer:
         self.init_xmap = jax.experimental.maps.xmap(fun=init,
                                                     in_axes=(["shard", ...],
                                                              ["batch", ...]),
-                                                    out_axes=(["batch", ...], ["shard", ...]),
+                                                    out_axes=[["batch", ...], ["shard", ...]],
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'})
 
         self.eval_xmap = jax.experimental.maps.xmap(fun=eval,
@@ -226,14 +226,14 @@ class CausalTransformer:
                                                              ["batch", ...],
                                                              ["batch", ...],
                                                              ["batch", ...]),
-                                                    out_axes=(["batch", ...], ["batch", ...], ["batch", ...], ["shard", ...]),
+                                                    out_axes=[["batch", ...], ["batch", ...], ["batch", ...], ["shard", ...]],
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'})
 
         self.train_xmap = jax.experimental.maps.xmap(fun=train,
                                                      in_axes=(["shard", ...],
                                                               ["batch", ...],
                                                               ["batch", ...]),
-                                                     out_axes=(["batch", ...], ["batch", ...], ["shard", ...]),
+                                                     out_axes=[["batch", ...], ["batch", ...], ["shard", ...]],
                                                      donate_argnums=(0,),
                                                      axis_resources={'shard': 'mp', 'batch': 'dp'})
 
@@ -244,12 +244,12 @@ class CausalTransformer:
                                                                  ["batch", ...],
                                                                  ["batch", ...],
                                                                  ["batch", ...]),                                                    
-                                                        out_axes=(["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["shard", ...]),
+                                                        out_axes=[["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["shard", ...]],
                                                         axis_resources={'shard': 'mp', 'batch': 'dp'})
 
         self.move_xmap = jax.experimental.maps.xmap(fun=lambda x, _: to_bf16(x),
                                                     in_axes=(["shard", ...], ["batch", ...]),
-                                                    out_axes=(["batch", ...], ["shard", ...]),
+                                                    out_axes=[["batch", ...], ["shard", ...]],
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'})
 
         key = hk.PRNGSequence(42)
