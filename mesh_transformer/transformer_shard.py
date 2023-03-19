@@ -234,7 +234,7 @@ class CausalTransformer:
                                                               ["batch", ...],
                                                               ["batch", ...]],
                                                      out_axes=[["shard", ...], ["batch", ...], ["batch", ...]],
-                                                     donate_argnums=(0,),
+                                                     donate_argnums=(0),
                                                      axis_resources={'shard': 'mp', 'batch': 'dp'})
 
         self.generate_xmap = jax.experimental.maps.xmap(fun=generate,
