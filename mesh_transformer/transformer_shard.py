@@ -226,14 +226,14 @@ class CausalTransformer:
                                                              ["batch", ...],
                                                              ["batch", ...],
                                                              ["batch", ...]),
-                                                    out_axes=(["shard", ...], ["batch", ...], ["batch", ...], ["batch", ...]),
+                                                    out_axes=(["shard", ...], ["batch", ...]),
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'}, backend='tpu')
 
         self.train_xmap = jax.experimental.maps.xmap(fun=train,
                                                      in_axes=(["shard", ...],
                                                               ["batch", ...],
                                                               ["batch", ...]),
-                                                     out_axes=(["shard", ...], ["batch", ...], ["batch", ...]),
+                                                     out_axes=(["shard", ...], ["batch", ...]),
                                                      donate_argnums=(0,),
                                                      axis_resources={'shard': 'mp', 'batch': 'dp'}, backend='tpu')
 
@@ -244,7 +244,7 @@ class CausalTransformer:
                                                                  ["batch", ...],
                                                                  ["batch", ...],
                                                                  ["batch", ...]),                                                    
-                                                        out_axes=(["shard", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...]),
+                                                        out_axes=(["shard", ...], ["batch", ...]),
                                                         axis_resources={'shard': 'mp', 'batch': 'dp'}, backend='tpu')
 
         self.move_xmap = jax.experimental.maps.xmap(fun=(lambda x, _: to_bf16(x)),
