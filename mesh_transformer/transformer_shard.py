@@ -274,7 +274,7 @@ class CausalTransformer:
         head_print("mp", mp)
 
         self.gen_length = 1
-        self.state = self.init_xmap(jnp.array(key.take(mp_per_host)), x)
+        self.state = self.init_xmap(jnp.array(key.take(mp_per_host)))(x)
 
         param_count = hk.data_structures.tree_size(self.state['params'])
         head_print(f"Total parameters: {param_count}")
