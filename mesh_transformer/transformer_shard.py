@@ -257,8 +257,8 @@ class CausalTransformer:
 
         assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
 
-        dp = 1
-        mp = 8
+        dp = thread_resources.env.shape['dp']
+        mp = thread_resources.env.shape['mp']
 
         mp_per_host = min(mp, 8)
 
@@ -284,7 +284,7 @@ class CausalTransformer:
         write_ckpt(self.state, path, shard)
 
     def load_ckpt(self, path):
-        self.state = read_ckpt(self.state, path, [1,8])
+        self.state = read_ckpt(self.state, path, thread_resources.env.shape['mp'])
 
     def train(self, sample):
         # print("train iter")
@@ -453,8 +453,8 @@ class CausalTransformerV2:
 
         assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
 
-        dp = 1
-        mp = 8
+        dp = thread_resources.env.shape['dp']
+        mp = thread_resources.env.shape['mp']
 
         key = hk.PRNGSequence(42)
         x = jax.random.uniform(next(key), (mp * dp, 16), minval=0, maxval=1).astype(jnp.uint32)  # batch, seq
