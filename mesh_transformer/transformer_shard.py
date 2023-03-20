@@ -255,7 +255,7 @@ class CausalTransformer:
 
         key = hk.PRNGSequence(42)
 
-        # assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
+        assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
 
         dp = 1
         mp = 8
@@ -451,7 +451,7 @@ class CausalTransformerV2:
 
             return output_state
 
-        # assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
+        assert thread_resources.env.shape['mp'] == config["cores_per_replica"]
 
         dp = 1
         mp = 8
