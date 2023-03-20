@@ -248,8 +248,7 @@ class CausalTransformer:
                                                         axis_resources={'shard': 'mp', 'batch': 'dp'}, backend='tpu')
 
         self.move_xmap = jax.experimental.maps.xmap(fun=(lambda x, _: to_bf16(x)),
-                                                    in_axes=[["shard", ...],
-                                                             ["batch", ...]],
+                                                    in_axes=[["shard", ...],["batch", ...]],
                                                     out_axes=[["shard", ...], ["batch", ...]],
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'}, backend='tpu')
 
