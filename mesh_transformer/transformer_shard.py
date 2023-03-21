@@ -215,28 +215,28 @@ class CausalTransformer:
             generate_fn = hk.transform(generate_sample).apply
             return generate_fn(state["params"], key, ctx, ctx_length, aux)
 
-        self.init_xmap = jax.experimental.maps.xmap(fun=init,
+        self.init_xmap = jax.experimental.maps.xmap(init,
                                                     in_axes=(["shard", ...], ["batch", ...]),
                                                     out_axes=["shard", ...],
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'})
 
-        self.eval_xmap = jax.experimental.maps.xmap(fun=eval,
+        self.eval_xmap = jax.experimental.maps.xmap(eval,
                                                     in_axes=(["shard", ...], ["batch", ...], ["batch", ...], ["batch", ...]),
                                                     out_axes=["batch", ...],
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'})
 
-        self.train_xmap = jax.experimental.maps.xmap(fun=train,
+        self.train_xmap = jax.experimental.maps.xmap(train,
                                                      in_axes=(["shard", ...], ["batch", ...], ["batch", ...]),
                                                      out_axes=["batch", "shard", ...],
                                                      donate_argnums=(0,),
                                                      axis_resources={'shard': 'mp', 'batch': 'dp'})
 
-        self.generate_xmap = jax.experimental.maps.xmap(fun=generate,
+        self.generate_xmap = jax.experimental.maps.xmap(generate,
                                                         in_axes=(["shard", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...], ["batch", ...]),                                                    
                                                         out_axes=["batch", ...],
                                                         axis_resources={'shard': 'mp', 'batch': 'dp'})
 
-        self.move_xmap = jax.experimental.maps.xmap(fun=(lambda x, _: to_bf16(x)),
+        self.move_xmap = jax.experimental.maps.xmap((lambda x, _: to_bf16(x)),
                                                     in_axes=(["shard", ...],["batch", ...]),
                                                     out_axes=["shard", ...],
                                                     axis_resources={'shard': 'mp', 'batch': 'dp'})
