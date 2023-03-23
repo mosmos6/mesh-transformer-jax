@@ -216,9 +216,8 @@ class CausalTransformer:
             return generate_fn(state["params"], key, ctx, ctx_length, aux)
 
         self.init_xmap = jax.experimental.maps.xmap(init,
-                                                    in_axes=(['data', ...]),
+                                                    in_axes=[],
                                                     out_axes=(['data', ...]),
-                                                    axis_sizes={'data': 8},
                                                     axis_resources={'data': 'mp'})
 
         self.eval_xmap = jax.experimental.maps.xmap(eval,
