@@ -217,8 +217,8 @@ class CausalTransformer:
 
         self.init_xmap = jax.experimental.maps.xmap(init,
                                                     in_axes=(["shard", ...], ["batch", ...]),
-                                                    out_axes=(["batch", "shard", ...], ['batch', ...]),
-                                                    axis_resources={'shard': 'mp', 'batch': 'dp'})
+                                                    out_axes=["batch", "shard"],
+                                                    axis_resources={'shard': 'mp'})
 
         self.eval_xmap = jax.experimental.maps.xmap(eval,
                                                     in_axes=(["shard", ...], ["batch", ...], ["batch", ...], ["batch", ...]),
