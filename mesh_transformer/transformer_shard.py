@@ -12,8 +12,7 @@ from jax.experimental.maps import thread_resources
 from jax.experimental.pjit import pjit
 
 from mesh_transformer.checkpoint import read_ckpt, write_ckpt, write_ckpt_v2, load_ckpt_v2
-from mesh_transformer.layers import EmbeddingShard, TransformerLayerShard, RelativePositionEmbs, ProjectionShard, \
-    TransformerLayerShardV2, Projection, EmbeddingShardV2
+from mesh_transformer.layers import EmbeddingShard, TransformerLayerShard, RelativePositionEmbs, ProjectionShard, TransformerLayerShardV2, Projection, EmbeddingShardV2
 from mesh_transformer.util import to_f32, to_bf16, maybe_shard, head_print, global_norm
 from jax.experimental import PartitionSpec as P
 
