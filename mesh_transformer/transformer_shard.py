@@ -17,6 +17,9 @@ from mesh_transformer.layers import EmbeddingShard, TransformerLayerShard, Relat
 from mesh_transformer.util import to_f32, to_bf16, maybe_shard, head_print, global_norm
 from jax.experimental import PartitionSpec as P
 
+import jax.tools.colab_tpu
+jax.tools.colab_tpu.setup_tpu()
+
 
 class CausalTransformerShard(hk.Module):
     def __init__(self, config):
