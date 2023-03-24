@@ -472,7 +472,9 @@ class CausalTransformerV2:
         # head_print("param_shapes: ", param_shapes)
         jax.tree_multimap(head_print, state_shard, param_shapes)
 
-        self.init_pjit = pjit(init, in_axis_resources=(None, P("dp")), out_axis_resources=state_shard)
+        #self.init_pjit = pjit(init, in_axis_resources=(None, P("dp")), out_axis_resources=state_shard)
+        self.init_pjit = pjit(init, in_axis_resources=(None, P("mp")), out_axis_resources=state_shard)
+
 
         def apply_fns():
             embed_apply_fn = hk.without_apply_rng(hk.transform(embedding)).apply
