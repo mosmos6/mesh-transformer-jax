@@ -26,7 +26,7 @@ requests_queue = Queue()
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"context":"eleutherai", "top_p": 0.9, "temp": 0.75}' \
-  http://188.27.85.174:8888/complete
+  http://188.27.85.174:5000/complete
 """
 
 
