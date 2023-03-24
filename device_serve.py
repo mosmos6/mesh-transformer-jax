@@ -76,7 +76,7 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    threading.Thread(target=app.run, kwargs={"port": 5000, "host": "0.0.0.0"}).start()
+    threading.Thread(target=app.run, kwargs={"port": 5000, "host": "188.27.85.174"}).start()
 
     args = parse_args()
     params = json.load(open(args.config))
