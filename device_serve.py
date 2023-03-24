@@ -26,7 +26,7 @@ requests_queue = Queue()
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"context":"eleutherai", "top_p": 0.9, "temp": 0.75}' \
-  http://34.90.97.233:5000/complete
+  http://localhost:8888/complete
 """
 
 
@@ -76,7 +76,7 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    threading.Thread(target=app.run, kwargs={"port": 5000, "host": "localhost"}).start()
+    threading.Thread(target=app.run, kwargs={"port": 8888, "host": "0.0.0.0"}).start()
 
     args = parse_args()
     params = json.load(open(args.config))
