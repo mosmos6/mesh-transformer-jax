@@ -18,7 +18,9 @@ from smart_open import open
 from mesh_transformer.util import clip_by_global_norm
 
 from flask import Flask, request, make_response, jsonify
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 requests_queue = Queue()
 
