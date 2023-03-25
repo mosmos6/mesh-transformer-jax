@@ -100,16 +100,17 @@ if __name__ == "__main__":
     norm = params["norm"]
 
     params["sampler"] = nucleaus_sample
-    opt = optax.chain(
-        optax.scale(1 / gradient_accumulation_steps),
-        clip_by_global_norm(1),
-        optax.scale_by_adam(),
-        optax.additive_weight_decay(0),
-        optax.scale(-1),
-        optax.scale_by_schedule(util.gpt3_schedule(0, 1, 0, 0))
-    )
+    #opt = optax.chain(
+    #   optax.scale(1 / gradient_accumulation_steps),
+    #   clip_by_global_norm(1),
+    #   optax.scale_by_adam(),
+    #   optax.additive_weight_decay(0),
+    #   optax.scale(-1),
+    #   optax.scale_by_schedule(util.gpt3_schedule(0, 1, 0, 0))
+    #)
 
-    params["optimizer"] = opt
+    #params["optimizer"] = opt
+    params["optimizer"] = optax.scale(0)
 
     start = time.time()
     print(f"jax devices: {jax.device_count()}")
