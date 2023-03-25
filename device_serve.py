@@ -126,7 +126,8 @@ if __name__ == "__main__":
 
     total_batch = per_replica_batch * jax.device_count() // cores_per_replica * 8
     with jax.experimental.maps.mesh(devices, ('dp', 'mp')):
-        network = CausalTransformer(params)
+        network = CausalTransformerV2(params)
+        #network = CausalTransformer(params)
 
         start = time.time()
         network.state = read_ckpt(network.state, f"gs://{bucket}/{model_dir}/step_{ckpt_step}/", devices.shape[1])
