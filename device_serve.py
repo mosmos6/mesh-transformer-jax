@@ -11,7 +11,8 @@ import optax
 from mesh_transformer import util
 from mesh_transformer.checkpoint import read_ckpt
 from mesh_transformer.sampling import nucleaus_sample
-from mesh_transformer.transformer_shard import CausalTransformer
+#from mesh_transformer.transformer_shard import CausalTransformer
+from mesh_transformer.transformer_shard import CausalTransformerV2
 import transformers
 from smart_open import open
 
